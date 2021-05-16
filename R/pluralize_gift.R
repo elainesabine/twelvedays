@@ -19,5 +19,3 @@ pluralize_gift <- function(gift){
     TRUE ~ str_c(gift, "s"))
   return(gift)
 }
-
-
