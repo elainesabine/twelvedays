@@ -35,11 +35,11 @@ sing_day <- function(dataset, line, phrase_col){
 
   ## make the phrases
   dataset <- dataset %>%
-    mutate(Full.Phrase =
+    mutate(phrase_col =
              pmap_chr(dataset, ~make_phrase(..1, ..8, ..7, ..4, ..5, ..6))) %>%
-    mutate(Full.Phrase = case_when(
-      Day == 1 ~ paste(Full.Phrase, ".", sep = ""),
-      TRUE ~ paste(Full.Phrase, ",", sep = "")
+    mutate(phrase_col = case_when(
+      Day == 1 ~ paste(phrase_col, ".", sep = ""),
+      TRUE ~ paste(phrase_col, ",", sep = "")
     ))
 
   ## filter relevant phrases
