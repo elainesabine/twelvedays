@@ -28,7 +28,7 @@ sing_day <- function(dataset, line, phrase_col){
     arrange(desc(Day)) %>%
     pull({{phrase_col}})
 
-  ## combine all the songs except the last one
+  ## combine all the lines
   song <- c(line1, phrases)
   song <- paste(song,collapse="\n")
   song <- str_glue(song, "\n")[[1]]
