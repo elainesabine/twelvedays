@@ -20,7 +20,7 @@ sing_day <- function(dataset, line, phrase_col){
   day <- dataset %>%
     filter(Day == line)
   day <- day[[2]]
-  line1 <- str_c( "On the ", day, " of Christmas, my true love sent to me,")
+  line1 <- str_c( "On the ", day, " day of Christmas, my true love sent to me,")
 
   ## filter relevant phrases
   phrases <- dataset %>%
