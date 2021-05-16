@@ -17,13 +17,11 @@
 #' @export
 
 
-
 make_phrase <- function(num, num_word, item, verb, adjective, location){
-
   verb <- str_replace_na(verb, "")
-
-  #????
-
-
+  adjective <- str_replace_na(adjective, "")
+  location <- str_replace_na(location, "")
+  phrase <- str_c(num_word, adjective, item, verb, location, sep = " ")
+  phrase <- str_squish(phrase)
+  return(phrase)
 }
-
