@@ -10,11 +10,14 @@
 #' @import purrr
 #'
 #' @export
+
+
 pluralize_gift <- function(gift){
-
-gift <- gift %>%
-  str_replace()
-
-return(gift)
-
+  gift <- case_when(
+    str_detect(gift, "s$") ~ str_replace(gift, "y$", "ies"),
+    str_detect(gift, "oo") ~ str_replace(gift, "oo", "ee"),
+    TRUE ~ str_c(gift, "s"))
+  return(gift)
 }
+
+
