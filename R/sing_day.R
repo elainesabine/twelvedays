@@ -30,7 +30,10 @@ sing_day <- function(dataset, line, phrase_col){
 
 
   ## create a column with the string version of the day
-  num_in_words <- c("and a", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve")
+  num_in_words <- c("Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve")
+  num_in_words <- case_when(
+    str_detect(dataset$Gift.Item[1], "^[aeiou]") ~ c("and an", num_in_words),
+    TRUE ~ c("and a", num_in_words))
   dataset <- add_column(dataset, num_in_words)
 
   ## make the phrases
