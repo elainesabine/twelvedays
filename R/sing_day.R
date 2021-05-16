@@ -14,6 +14,7 @@
 #'
 #' @export
 
+
 sing_day <- function(dataset, line, phrase_col){
   ## create the first line of the song
   day <- dataset %>%
@@ -29,17 +30,15 @@ sing_day <- function(dataset, line, phrase_col){
 
 
   ## create a column with the string version of the day
-  num_in_words <- c("and a", "Two", "Three", "Four", "Five", "Six", "Seven",
-                    "Eight", "Nine", "Ten", "Eleven", "Twelve")
+  num_in_words <- c("and a", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve")
   dataset <- add_column(dataset, num_in_words)
 
   ## make the phrases
   dataset <- dataset %>%
-    mutate(phrase_col =
-             pmap_chr(dataset, ~make_phrase(..1, ..8, ..7, ..4, ..5, ..6))) %>%
-    mutate(phrase_col = case_when(
-      Day == 1 ~ paste(phrase_col, ".", sep = ""),
-      TRUE ~ paste(phrase_col, ",", sep = "")
+    mutate({{phrase_col}} := pmap_chr(dataset, ~make_phrase(..1, ..8, ..7, ..4, ..5, ..6))) %>%
+    mutate({{phrase_col}} := case_when(
+      Day == 1 ~ paste({{phrase_col}}, ".", sep = ""),
+      TRUE ~ paste({{phrase_col}}, ",", sep = "")
     ))
 
   ## filter relevant phrases
