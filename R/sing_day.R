@@ -22,11 +22,17 @@ sing_day <- function(dataset, line, phrase_col){
   day <- day[[2]]
   line1 <- str_c( "On the ", day, " day of Christmas, my true love sent to me,")
 
+
   ## filter relevant phrases
   phrases <- dataset %>%
     filter(Day <= line) %>%
     arrange(desc(Day)) %>%
     pull({{phrase_col}})
+
+  phrases[[length(phrases)]] <- case_when(
+    line != 1 ~ paste("and ", phrases[[length(phrases)]], sep = ""),
+    TRUE ~ phrases[[length(phrases)]]
+  )
 
   ## combine all the lines
   song <- c(line1, phrases)

@@ -29,19 +29,19 @@ make_phrase <- function(num, num_word, item, verb, adjective, location){
 
   ## get the correct num_word
   num_word <- case_when(
-    num == 12 ~ "Twelve",
-    num == 11 ~ "Eleven",
-    num == 10 ~ "Ten",
-    num == 9 ~ "Nine",
-    num == 8 ~ "Eight",
-    num == 7 ~ "Seven",
-    num == 6 ~ "Six",
-    num == 5 ~ "Five",
-    num == 4 ~ "Four",
-    num == 3 ~ "Three",
-    num == 2 ~ "Two",
-    num == 1 & str_detect(item, "^[aeiou]") ~ "and an",
-    TRUE ~ "and a"
+    num == 12 ~ "twelve",
+    num == 11 ~ "eleven",
+    num == 10 ~ "ten",
+    num == 9 ~ "nine",
+    num == 8 ~ "eight",
+    num == 7 ~ "seven",
+    num == 6 ~ "six",
+    num == 5 ~ "five",
+    num == 4 ~ "four",
+    num == 3 ~ "three",
+    num == 2 ~ "two",
+    num == 1 & str_detect(item, "^[aeiou]") ~ "an",
+    TRUE ~ "a"
   )
 
   phrase <- str_c(num_word, adjective, plural_item, verb, location, sep = " ")
