@@ -13,7 +13,7 @@ test_that("sing day", {
     mutate(
       Full.Phrase = pmap_chr(xmas2, ~make_phrase(..1, ..2, ..3, ..4, ..5, ..6))
     )
-  expected <- "On the first day of Christmas, my true love sent to me,\nand an email from Cal Poly."
+  expected <- "On the first day of Christmas, my true love sent to me,\nan email from Cal Poly."
   expect_equal(sing_day(xmas2, 1, Full.Phrase), expected)
 })
 
@@ -23,6 +23,6 @@ test_that("make phrases", {
     mutate(
       Full.Phrase = pmap_chr(xmas2, ~make_phrase(..1, ..2, ..3, ..4, ..5, ..6))
     )
-  expected <- "and an email from Cal Poly."
+  expected <- "an email from Cal Poly."
   expect_equal(input$Full.Phrase[[1]], expected)
 })
